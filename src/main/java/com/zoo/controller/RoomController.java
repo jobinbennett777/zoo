@@ -28,7 +28,7 @@ public class RoomController {
 	}
 	
 	@PutMapping("/room/{id}")
-	public ResponseEntity<Room> udateRoom(@PathVariable long id, @RequestBody RoomRequestDTO request) {
+	public ResponseEntity<Room> updateRoom(@PathVariable long id, @RequestBody RoomRequestDTO request) {
 		Room room = null;
 		return new ResponseEntity<>(room, HttpStatus.OK);
 	}

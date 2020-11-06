@@ -28,7 +28,7 @@ public class AnimalController {
 	}
 	
 	@PutMapping("/animal/{id}")
-	public ResponseEntity<Animal> udateAnimal(@PathVariable long id, @RequestBody AnimalRequestDTO request) {
+	public ResponseEntity<Animal> updateAnimal(@PathVariable long id, @RequestBody AnimalRequestDTO request) {
 		Animal animal = null;
 		return new ResponseEntity<>(animal, HttpStatus.OK);
 	}
