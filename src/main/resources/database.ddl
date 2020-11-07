@@ -19,6 +19,7 @@ CREATE TABLE Animal
   type VARCHAR(10)
   preference BIGINT 
   FOREIGN KEY (room_id) REFERENCES Room(id)
+  
 );
 
 DROP TABLE Favorite;
@@ -28,6 +29,8 @@ CREATE TABLE Favorite
   version int not null default 0,
   room_id BIGINT,
   animal_id BIGINT
+  FOREIGN KEY (animal_id) REFERENCES Animal(id)
+  FOREIGN KEY (room_id) REFERENCES Room(id)
 );
 
 CREATE INDEX room_idx ON Room(id);

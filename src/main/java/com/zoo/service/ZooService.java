@@ -69,5 +69,5 @@ public interface ZooService {
 	 * @param animalId
 	 * @return
 	 */
-	public List<Room> getFavoriteRooms(Long animalId);
+	public List<String> getFavoriteRooms(Long animalId);
 }

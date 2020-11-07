@@ -12,6 +12,7 @@ import com.zoo.exception.RoomNotFoundException;
 import com.zoo.model.Animal;
 import com.zoo.model.Room;
 import com.zoo.repository.AnimalRepository;
+import com.zoo.repository.FavoriteRepository;
 import com.zoo.repository.RoomRepository;
 import com.zoo.service.AnimalService;
 import com.zoo.service.RoomService;
@@ -35,7 +36,10 @@ public class ZooServiceImpl implements ZooService {
 	AnimalRepository animalRepository;
 	
 	@Autowired
-	RoomRepository rooRepository;
+	RoomRepository roomRepository;
+	
+	@Autowired
+	FavoriteRepository favoriteRepository;
 
 	@Override
 	public Animal assignRoom(Long animalId, Long roomId) throws AnimalNotFoundException, RoomNotFoundException {
@@ -89,11 +93,10 @@ public class ZooServiceImpl implements ZooService {
 		
 		return animalRepository.findAllByRoomId(roomId,Sort.by(direction, property));
 	}
-
+	
 	@Override
-	public List<Room> getFavoriteRooms(Long animalId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> getFavoriteRooms(Long animalId) {
+		return roomRepository.findAllFavoriteRooms(animalId);
 	}
 
 }

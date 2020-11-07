@@ -111,7 +111,7 @@ public class ZooController {
 	}
 	
 	@GetMapping("/room/favorite/{animalId}")
-	public ResponseEntity<List<Room>> getFavoriteRooms(@PathVariable Long animalId) throws AnimalNotFoundException {
+	public ResponseEntity<List<String>> getFavoriteRooms(@PathVariable Long animalId) throws AnimalNotFoundException {
 		return new ResponseEntity<>(zooService.getFavoriteRooms(animalId), HttpStatus.OK);
 	}
 }
