@@ -1,6 +1,9 @@
 package com.zoo.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.zoo.model.Animal;
@@ -11,5 +14,7 @@ import com.zoo.model.Animal;
  *
  */
 @Repository
-public interface AnimalRepository extends PagingAndSortingRepository<Animal, Long> {
+public interface AnimalRepository extends JpaRepository<Animal, Long> {
+	
+	List<Animal>findAllByRoomId(Long roomID,Sort sort);
 }
