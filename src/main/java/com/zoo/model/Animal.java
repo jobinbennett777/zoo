@@ -44,8 +44,8 @@ public class Animal {
 	private Long preference;
 	
 	@UpdateTimestamp
-	@Column(name = "locatedDate")
-	private Timestamp locatedDate;
+	@Column(name = "located")
+	private Timestamp located;
 	
 	@OneToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id")
@@ -99,12 +99,12 @@ public class Animal {
 		this.preference = preference;
 	}
 
-	public Timestamp getLocatedDate() {
-		return locatedDate;
+	public Timestamp getLocated() {
+		return located;
 	}
 
-	public void setLocatedDate(Timestamp locatedDate) {
-		this.locatedDate = locatedDate;
+	public void setLocated(Timestamp located) {
+		this.located = located;
 	}
 
 

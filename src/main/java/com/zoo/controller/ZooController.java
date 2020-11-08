@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zoo.exception.AnimalNotFoundException;
 import com.zoo.exception.RoomNotFoundException;
 import com.zoo.model.Animal;
-import com.zoo.model.Room;
 import com.zoo.service.FavoriteRoomService;
 import com.zoo.service.ZooService;
 
@@ -110,6 +109,13 @@ public class ZooController {
 		return new ResponseEntity<>(String.format("Succesfully released favorite room"), HttpStatus.OK);
 	}
 	
+	/**
+	 * Get Favorite rooms for the given animal
+	 * 
+	 * @param animalId
+	 * @return
+	 * @throws AnimalNotFoundException
+	 */
 	@GetMapping("/room/favorite/{animalId}")
 	public ResponseEntity<List<String>> getFavoriteRooms(@PathVariable Long animalId) throws AnimalNotFoundException {
 		return new ResponseEntity<>(zooService.getFavoriteRooms(animalId), HttpStatus.OK);

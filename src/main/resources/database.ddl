@@ -15,7 +15,7 @@ CREATE TABLE Animal
   version int not null default 0,
   title VARCHAR(255),
   room_id BIGINT,
-  locatedDate TIMESTAMP,
+  located TIMESTAMP,
   type VARCHAR(10)
   preference BIGINT 
   FOREIGN KEY (room_id) REFERENCES Room(id)
