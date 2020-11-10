@@ -1,12 +1,16 @@
 package com.zoo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Tuple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.zoo.dto.HappyAnimalsDTO;
 import com.zoo.exception.AnimalNotFoundException;
 import com.zoo.exception.RoomNotFoundException;
 import com.zoo.model.Animal;
@@ -97,6 +101,22 @@ public class ZooServiceImpl implements ZooService {
 	@Override
 	public List<String> getFavoriteRooms(Long animalId) {
 		return roomRepository.findAllFavoriteRooms(animalId);
+	}
+
+	@Override
+	public List<HappyAnimalsDTO> getHappyAnimals() {
+		
+		List<Tuple> s = roomRepository.findALLHappyAnimals();
+		List<HappyAnimalsDTO> dtoList = new ArrayList<>();
+		HappyAnimalsDTO dto =  new HappyAnimalsDTO();
+		s.forEach(tuple -> {
+			Number no_of_happy_animals  = (Number) tuple.get("No_of_happy_animals");
+			String room_title  =(String) tuple.get("ROOM_TITLE");
+			dto.setNo_of_happy_animals(no_of_happy_animals.longValue());
+			dto.setRoom_title(room_title);
+			dtoList.add(dto);
+		});
+		return dtoList;
 	}
 
 }

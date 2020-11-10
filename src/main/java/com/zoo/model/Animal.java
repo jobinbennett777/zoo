@@ -16,6 +16,8 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Noble Sebastian
  * @version 1.0
@@ -30,6 +32,7 @@ public class Animal {
 	@Column(name = "id", nullable = false, updatable = false)
 	private Long id;
 	
+	@JsonIgnore
 	@Version
 	@Column(name = "VERSION_ID", nullable = false, columnDefinition = "int default 0")
 	private Integer versionId;
@@ -43,10 +46,12 @@ public class Animal {
 	@Column(name = "preference")
 	private Long preference;
 	
+	@JsonIgnore
 	@UpdateTimestamp
 	@Column(name = "located")
 	private Timestamp located;
 	
+	@JsonIgnore
 	@OneToOne
     @JoinColumn(name = "room_id", referencedColumnName = "id")
 	private Room room;

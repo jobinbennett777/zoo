@@ -2,10 +2,10 @@ package com.zoo.service;
 
 import java.util.List;
 
+import com.zoo.dto.HappyAnimalsDTO;
 import com.zoo.exception.AnimalNotFoundException;
 import com.zoo.exception.RoomNotFoundException;
 import com.zoo.model.Animal;
-import com.zoo.model.Room;
 
 /**
  * @author Noble Sebastian
@@ -70,4 +70,6 @@ public interface ZooService {
 	 * @return
 	 */
 	public List<String> getFavoriteRooms(Long animalId);
+	
+	public List<HappyAnimalsDTO> getHappyAnimals();
 }

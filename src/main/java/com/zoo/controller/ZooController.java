@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zoo.dto.HappyAnimalsDTO;
 import com.zoo.exception.AnimalNotFoundException;
 import com.zoo.exception.RoomNotFoundException;
 import com.zoo.model.Animal;
@@ -119,5 +120,10 @@ public class ZooController {
 	@GetMapping("/room/favorite/{animalId}")
 	public ResponseEntity<List<String>> getFavoriteRooms(@PathVariable Long animalId) throws AnimalNotFoundException {
 		return new ResponseEntity<>(zooService.getFavoriteRooms(animalId), HttpStatus.OK);
+	}
+	
+	@GetMapping("/report")
+	public ResponseEntity<List<HappyAnimalsDTO>> getHappyAnimals() {
+		return new ResponseEntity<>(zooService.getHappyAnimals(), HttpStatus.OK);
 	}
 }

@@ -16,6 +16,8 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Noble Sebastian
  * @version 1.0
@@ -31,6 +33,7 @@ public class Room {
 	private Long id;
 	
 	@Version
+	@JsonIgnore
 	@Column(name = "VERSION_ID", nullable = false, columnDefinition = "int default 0")
 	private Integer versionId;
 	
@@ -40,10 +43,12 @@ public class Room {
 	@Column(name = "size")
 	private Long size;
 	
+	@JsonIgnore
 	@Column(name = "created")
 	@CreationTimestamp
 	private Timestamp Timestamp;
 	
+	@JsonIgnore
 	@OneToMany(targetEntity=Animal.class)
     private List<Animal> animals;
 	
